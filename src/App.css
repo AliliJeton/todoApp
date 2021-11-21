@@ -56,9 +56,11 @@ button {
     height: auto;
 }
 
-/* New shit */
+
 #input_form_todo {
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 #input_form_todo input {

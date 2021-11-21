@@ -1,16 +1,23 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
-import {Checkbox} from "../CheckBox";
 
-function TodoForm({addTodo}) {
+export var eingabe = "";
+
+function TodoForm({ addTodo, setChecked }) {
     const [todo, setTodo] = useState({
-        id: "",
-        task: "",
-        isCompleted: false,
+      id: "",
+      task: "",
+      isCompleted: false,
+      prio: 0,
+      prioColorLow: "honeydew",
+      prioColorMed: "honeydew",
+      prioColorHigh: "honeydew",
     });
 
     function handleTaskInputChange(e) {
         setTodo({...todo, task: e.target.value});
+        setChecked(0);
+        eingabe = e.target.value;
     }
 
     function handleSubmit(e) {
@@ -18,6 +25,7 @@ function TodoForm({addTodo}) {
         if (todo.task.trim()) {
             addTodo({...todo, id: uuidv4()});
             setTodo({...todo, task: ""});
+            eingabe = "";
         }
     }
 
